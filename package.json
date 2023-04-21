@@ -4,7 +4,7 @@
   "description": "An auth server which will be used for Demo on Pathwar",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "server": "nodemon app.ts"
   },
   "repository": {
     "type": "git",
