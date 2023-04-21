@@ -9,16 +9,16 @@ export interface Session {
     id: number;
     dateCreated: Date;
     username: string;
-    issued: number;
-    expires: number;
+    iat: number;
+    exp: number;
 }
 
-export type PartialSession = Omit<Session, "issued" | "expires">;
+export type PartialSession = Omit<Session, "iat" | "exp">;
 
 export interface EncodeResult {
     token: string;
-    expires: number;
-    issued: number;
+    exp: number;
+    iat: number;
 }
 
 export type DecodeResult =
