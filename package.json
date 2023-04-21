@@ -1,0 +1,29 @@
+{
+  "name": "sso-auth-server",
+  "version": "1.0.0",
+  "description": "An auth server which will be used for Demo on Pathwar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mikatech/sso-auth-server.git"
+  },
+  "author": "Mikatech",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Mikatech/sso-auth-server/issues"
+  },
+  "homepage": "https://github.com/Mikatech/sso-auth-server#readme",
+  "devDependencies": {
+    "@types/express": "^4.17.17",
+    "@types/node": "^18.15.13",
+    "nodemon": "^2.0.22",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
