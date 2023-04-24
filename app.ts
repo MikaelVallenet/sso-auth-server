@@ -8,10 +8,11 @@ const app = express();
 const port = 3000;
 
 const SECRET_KEY = process.env.SECRET_KEY
+const CORS_FRONT_URL = process.env.CORS_FRONT_URL
 
 const cors = require('cors');
 app.use(cors({
-    origin: 'http://localhost:8000'
+    origin: CORS_FRONT_URL
 }));
 
 const getToken = (req: Request, res: Response, next: NextFunction) => {
