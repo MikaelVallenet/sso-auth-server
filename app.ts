@@ -9,6 +9,11 @@ const port = 3000;
 
 const SECRET_KEY = process.env.SECRET_KEY
 
+const cors = require('cors');
+app.use(cors({
+    origin: 'http://localhost:8000'
+}));
+
 const getToken = (req: Request, res: Response, next: NextFunction) => {
     const token = jwt.sign({
         preferred_username: "mikatech",
