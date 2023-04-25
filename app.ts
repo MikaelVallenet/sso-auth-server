@@ -17,12 +17,13 @@ app.use(cors({
 
 const getToken = (req: Request, res: Response, next: NextFunction) => {
     const token = jwt.sign({
-        preferred_username: "mikatech",
+        preferred_username: "mikalelito",
         email: "mikael@berty.tech",
         email_verified: true,
         given_name: "Mikael",
         family_name: "Vallenet",
-    }, SECRET_KEY, {expiresIn: "1h"})
+        sub: "532cb4a4-7ad7-40a5-826a-c8272af2d9f3",
+    }, SECRET_KEY, {expiresIn: "30s"})
     res.json({token})
 }
 
