@@ -1,0 +1,33 @@
+version: "3"
+services:
+
+  db:
+    image: postgres:15
+    container_name: sso_db
+    restart: always
+    env_file:
+      "./postgres/.env"
+    volumes:
+      - sso-db-data:/var/lib/postgresql/data
+      - ./postgres:/etc/postgresql/15/main
+    ports:
+    - "5432:5432"
+
+
+  server:
+    build: ./go
+    container_name: sso_server
+    restart: always
+    ports:
+      - "8080"
+    env_file:
+      - "./go/.env"
+    network_mode: "host"
+    volumes:
+     - sso-build:/tmp/build
+    depends_on:
+     - "db"
+
+volumes:
+  sso-db-data:
+  sso-build:
