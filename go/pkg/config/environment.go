@@ -12,6 +12,8 @@ var Config *config
 
 type config struct {
 	Port             string `mapstructure:"PORT"`
+	PostgresPort     string `mapstructure:"POSTGRES_PORT"`
+	PostgresHost     string `mapstructure:"POSTGRES_HOST"`
 	PostgresPassword string `mapstructure:"POSTGRES_PASSWORD"`
 	PostgresUser     string `mapstructure:"POSTGRES_USER"`
 	PostgresDb       string `mapstructure:"POSTGRES_DB"`
