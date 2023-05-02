@@ -5,5 +5,5 @@ COPY go.mod go.sum ./
 RUN go mod download
 
 COPY . .
-RUN go build -o server ./cmd/.
-CMD [ "./app" ]
+RUN go build -o server ./go/cmd/.
+CMD [ "./server" ]

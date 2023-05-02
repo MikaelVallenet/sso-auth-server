@@ -9,22 +9,20 @@ services:
       "./postgres/.env"
     volumes:
       - sso-db-data:/var/lib/postgresql/data
-      - ./postgres:/etc/postgresql/15/main
     ports:
-    - "5432:5432"
+    - "5433:5433"
 
 
   server:
-    build: ./go
+    build:
+      context: .
+      dockerfile: Dockerfile.server
     container_name: sso_server
     restart: always
     ports:
-      - "8080"
+      - "3000:3000"
     env_file:
       - "./go/.env"
-    network_mode: "host"
-    volumes:
-     - sso-build:/tmp/build
     depends_on:
      - "db"
 
