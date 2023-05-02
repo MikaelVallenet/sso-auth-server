@@ -1,17 +1,15 @@
 package main
 
 import (
-	"net/http"
+	"fmt"
 
-	"github.com/gin-gonic/gin"
+	"github.com/Mikatech/sso-auth-server/go/pkg/config"
 )
 
 func main() {
-	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "pong",
-		})
-	})
-	r.Run()
+	err := config.LoadConfig()
+	if err != nil {
+		return
+	}
+	fmt.Println(config.Config.PostgresDb)
 }
