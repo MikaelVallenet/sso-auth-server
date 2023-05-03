@@ -17,5 +17,5 @@ func main() {
 	if err != nil {
 		return
 	}
-	fmt.Println(config.Config.PostgresDb)
+	fmt.Println("Hello World!, je suis connecté")
 }

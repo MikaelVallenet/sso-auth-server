@@ -5,12 +5,11 @@ services:
     image: postgres:15
     container_name: sso_db
     restart: always
+    network_mode: "host"
     env_file:
-      "./postgres/.env"
+      - "./postgres/.env"
     volumes:
       - sso-db-data:/var/lib/postgresql/data
-    ports:
-    - "5432:5432"
 
 
   server:
@@ -19,16 +18,14 @@ services:
       dockerfile: Dockerfile.server
     container_name: sso_server
     restart: always
-    ports:
-      - "3000:3000"
+    network_mode: "host"
     env_file:
       - "./go/.env"
-    network_mode: "host"
     volumes:
       - sso-build:/tmp/build
     depends_on:
-     - "db"
+      - db
 
 volumes:
-  sso-db-data:
   sso-build:
+  sso-db-data:
