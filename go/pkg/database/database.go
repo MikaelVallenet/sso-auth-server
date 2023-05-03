@@ -1,7 +1,6 @@
 package database
 
 import (
-	"fmt"
 	"log"
 
 	"github.com/Mikatech/sso-auth-server/go/pkg/config"
@@ -20,10 +19,14 @@ func dsnBuilder() string {
 
 func Init() (*Database, error) {
 	dsn := dsnBuilder()
-	fmt.Println(dsn)
 	database, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
 		log.Fatalf("Error connecting to database, %s", err)
+		return nil, err
+	}
+	err = migrate(database)
+	if err != nil {
+		log.Fatalf("Error migrating database, %s", err)
 		return nil, err
 	}
 	return &Database{Client: database}, nil

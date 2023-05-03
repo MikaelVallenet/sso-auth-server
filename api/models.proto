@@ -5,7 +5,10 @@ package sso.models;
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "go/pkg/models";
+option go_package = "go/pkg/database";
+option (gogoproto.sizer_all) = true;
+option (gogoproto.marshaler_all) = true;
+option (gogoproto.unmarshaler_all) = true;
 
 message User {
     int64 id = 1 [(gogoproto.moretags) = "gorm:\"primaryKey\" yaml:\"id,omitempty\""];
