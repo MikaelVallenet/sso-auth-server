@@ -2,9 +2,10 @@ module github.com/Mikatech/sso-auth-server
 
 go 1.20
 
+require github.com/gogo/protobuf v1.3.2
+
 require (
 	github.com/fsnotify/fsnotify v1.6.0 // indirect
-	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
 	github.com/jackc/pgservicefile v0.0.0-20221227161230-091c0ba34f0a // indirect

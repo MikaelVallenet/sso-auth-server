@@ -5,11 +5,17 @@ package sso.models;
 import "github.com/gogo/protobuf/gogoproto/gogo.proto";
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/Mikatech/sso-auth-server/go/pkg/models";
+option go_package = "go/pkg/models";
 
 message User {
     int64 id = 1 [(gogoproto.moretags) = "gorm:\"primaryKey\" yaml:\"id,omitempty\""];
     google.protobuf.Timestamp created_at = 2 [(gogoproto.stdtime) = true, (gogoproto.nullable) = true, (gogoproto.moretags) = "yaml:\"created_at,omitempty\""];
     google.protobuf.Timestamp updated_at = 3 [(gogoproto.stdtime) = true, (gogoproto.nullable) = true, (gogoproto.moretags) = "yaml:\"updated_at,omitempty\""];
 
+    string username = 4 [(gogoproto.moretags) = "gorm:\"unique_index\""];
+    string email = 5 [(gogoproto.moretags) = "gorm:\"unique_index\""];
+    string password = 6;
+    string role = 7 [(gogoproto.moretags) = "gorm:\"default:'user'\""];
+    string status = 8 [(gogoproto.moretags) = "gorm:\"default:'active'\""];
+    string access_token = 9 [(gogoproto.moretags) = "gorm:\"unique_index\""];
 }
