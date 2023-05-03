@@ -16,3 +16,4 @@
 # vendor/
 
 private.key
+vendor/
