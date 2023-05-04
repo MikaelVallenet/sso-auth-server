@@ -6,6 +6,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Login(c *gin.Context) {
-	c.String(http.StatusOK, "Success")
+func Login(ctx *gin.Context) {
+	ctx.String(http.StatusOK, "Success")
 }
