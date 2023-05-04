@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package sso.routes;
+
+option go_package = "go/pkg/routes";
+
+message RegisterInput {
+    string username = 1;
+    string email = 2;
+    string password = 3;
+}
+
+message RegisterOutput {
+    string res = 1;
+}

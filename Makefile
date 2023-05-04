@@ -1,5 +1,5 @@
 GOPATH ?= $(HOME)/go
-PROTOS_SRC = $(wildcard ./api/*.proto)
+PROTOS_SRC = $(wildcard ./protos/*.proto)
 
 
 .PHONY: run
@@ -15,5 +15,7 @@ stop:
 .PHONY: generate
 generate:
 	@echo "Generating..."
-	protoc -I=. -I=$(GOPATH)/src --gogofaster_out=. protos/models.proto
+	@for proto_file in $(PROTOS_SRC); do \
+		protoc -I=. -I=$(GOPATH)/src --gogofaster_out=. $$proto_file; \
+	done
 	goimports -w .
