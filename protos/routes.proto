@@ -8,10 +8,6 @@ option go_package = "go/pkg/routes";
 
 message RegisterInput {
     string username = 1 [(gogoproto.moretags) = "json:\"username\" form:\"username\" binding:\"required,min=3,max=20\""];
-    string email = 2;
-    string password = 3;
-}
-
-message RegisterOutput {
-    string res = 1;
+    string email = 2 [(gogoproto.moretags) = "json:\"email\" form:\"email\" binding:\"required,email\""];
+    string password = 3 [(gogoproto.moretags) = "json:\"password\" form:\"password\" binding:\"required,min=8,max=20\""];
 }
