@@ -4,7 +4,6 @@ import (
 	"github.com/Mikatech/sso-auth-server/go/pkg/config"
 	"github.com/Mikatech/sso-auth-server/go/pkg/database"
 	"github.com/Mikatech/sso-auth-server/go/pkg/routes"
-	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -16,7 +15,6 @@ func main() {
 	if err != nil {
 		return
 	}
-	router := gin.Default()
-	router.POST("/register", routes.Register)
+	router := routes.Init()
 	router.Run(":" + config.Config.Port)
 }
