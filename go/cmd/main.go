@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
-
 	"github.com/Mikatech/sso-auth-server/go/pkg/config"
 	"github.com/Mikatech/sso-auth-server/go/pkg/database"
+	"github.com/Mikatech/sso-auth-server/go/pkg/routes"
+	"github.com/gin-gonic/gin"
 )
 
 func main() {
@@ -12,10 +12,11 @@ func main() {
 	if err != nil {
 		return
 	}
-
 	_, err = database.Init()
 	if err != nil {
 		return
 	}
-	fmt.Println("Hello World!, je suis connecté")
+	router := gin.Default()
+	router.POST("/register", routes.Register)
+	router.Run(":" + config.Config.Port)
 }

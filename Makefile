@@ -5,7 +5,7 @@ PROTOS_SRC = $(wildcard ./api/*.proto)
 .PHONY: run
 run:
 	@echo "Running..."
-	docker-compose up
+	docker-compose up --build
 
 .PHONY: stop
 stop:
