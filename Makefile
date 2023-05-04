@@ -5,7 +5,7 @@ PROTOS_SRC = $(wildcard ./api/*.proto)
 .PHONY: run
 run:
 	@echo "Running..."
-	docker-compose up
+	docker-compose up --build
 
 .PHONY: stop
 stop:
@@ -15,4 +15,5 @@ stop:
 .PHONY: generate
 generate:
 	@echo "Generating..."
-	protoc -I=. -I=$(GOPATH)/src -I=$(GOPATH)/src/github.com/gogo/protobuf/protobuf --gogofaster_out=. api/models.proto
+	protoc -I=. -I=$(GOPATH)/src --gogofaster_out=. api/models.proto
+	goimports -w .

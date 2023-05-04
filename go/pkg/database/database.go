@@ -2,11 +2,14 @@ package database
 
 import (
 	"log"
+	"time"
 
 	"github.com/Mikatech/sso-auth-server/go/pkg/config"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
+
+const DBMaxOpenTries = 5
 
 type Database struct {
 	Client *gorm.DB
@@ -19,15 +22,23 @@ func dsnBuilder() string {
 
 func Init() (*Database, error) {
 	dsn := dsnBuilder()
-	database, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
-	if err != nil {
-		log.Fatalf("Error connecting to database, %s", err)
-		return nil, err
+
+	dbOpenTries := 0
+	for dbOpenTries <= DBMaxOpenTries {
+		database, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
+		if err != nil {
+			log.Printf("Error connecting to database, %s", err)
+			dbOpenTries++
+			time.Sleep(5 * time.Second)
+			continue
+		}
+		err = migrate(database)
+		if err != nil {
+			log.Printf("Error migrating database, %s", err)
+			dbOpenTries++
+			return nil, err
+		}
+		return &Database{Client: database}, nil
 	}
-	err = migrate(database)
-	if err != nil {
-		log.Fatalf("Error migrating database, %s", err)
-		return nil, err
-	}
-	return &Database{Client: database}, nil
+	return nil, nil
 }
