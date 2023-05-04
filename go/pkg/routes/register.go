@@ -7,5 +7,6 @@ import (
 )
 
 func Register(c *gin.Context) {
+
 	c.String(http.StatusOK, "Success")
 }

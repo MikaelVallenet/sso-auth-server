@@ -2,10 +2,12 @@ syntax = "proto3";
 
 package sso.routes;
 
+import "github.com/gogo/protobuf/gogoproto/gogo.proto";
+
 option go_package = "go/pkg/routes";
 
 message RegisterInput {
-    string username = 1;
+    string username = 1 [(gogoproto.moretags) = "json:\"username\" form:\"username\" binding:\"required\" min:\"3\" max:\"20\""];
     string email = 2;
     string password = 3;
 }
