@@ -18,7 +18,7 @@ type config struct {
 	PostgresUser     string `mapstructure:"POSTGRES_USER"`
 	PostgresDb       string `mapstructure:"POSTGRES_DB"`
 	Issuer           string `mapstructure:"ISSUER"`
-	ExpireIn         string `mapstructure:"EXPIRE_IN"`
+	ExpireIn         int    `mapstructure:"EXPIRE_IN"`
 	PrivateKeyPath   string `mapstructure:"PRIVATE_KEY_PATH"`
 }
 
