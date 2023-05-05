@@ -15,7 +15,17 @@ import (
 func Generate(user database.User) (string, error) {
 	token := jwt.New(jwt.SigningMethodRS256)
 	addClaims(token, user)
-	return "", nil
+
+	privateKey, err := loadPrivateKey()
+	if err != nil {
+		return "", err
+	}
+
+	tokenString, err := token.SignedString(privateKey)
+	if err != nil {
+		return "", err
+	}
+	return tokenString, nil
 }
 
 // TODO: Change Id per ID
