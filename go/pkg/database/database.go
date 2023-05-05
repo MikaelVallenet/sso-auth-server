@@ -5,7 +5,6 @@ import (
 	"time"
 
 	"github.com/Mikatech/sso-auth-server/go/pkg/config"
-	"github.com/Mikatech/sso-auth-server/go/pkg/routes"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -17,7 +16,7 @@ func dsnBuilder() string {
 	return dsn
 }
 
-func Init() (*routes.Svc, error) {
+func Init() (*gorm.DB, error) {
 	dsn := dsnBuilder()
 
 	dbOpenTries := 0
@@ -35,7 +34,7 @@ func Init() (*routes.Svc, error) {
 			dbOpenTries++
 			return nil, err
 		}
-		return &routes.Svc{Db: database}, nil
+		return database, nil
 	}
 	return nil, nil
 }

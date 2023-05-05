@@ -3,6 +3,7 @@ package main
 import (
 	"github.com/Mikatech/sso-auth-server/go/pkg/config"
 	"github.com/Mikatech/sso-auth-server/go/pkg/database"
+	"github.com/Mikatech/sso-auth-server/go/pkg/routes"
 )
 
 func main() {
@@ -10,10 +11,10 @@ func main() {
 	if err != nil {
 		return
 	}
-	svc, err := database.Init()
+	db, err := database.Init()
 	if err != nil {
 		return
 	}
-	router := svc.Init()
+	router := routes.Init(db)
 	router.Run(":" + config.Config.Port)
 }
