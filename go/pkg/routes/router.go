@@ -4,10 +4,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Init() *gin.Engine {
+func (svc *Svc) Init() *gin.Engine {
 	router := gin.New()
-	router.POST("/register", Register)
-	router.POST("/login", Login)
-	router.POST("/token", Token)
+	router.POST("/register", svc.Register)
+	router.POST("/login", svc.Login)
+	router.POST("/token", svc.Token)
 	return router
 }

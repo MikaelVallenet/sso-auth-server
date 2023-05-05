@@ -6,6 +6,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Token(ctx *gin.Context) {
+func (svc *Svc) Token(ctx *gin.Context) {
 	ctx.String(http.StatusOK, "Success")
 }

@@ -5,22 +5,19 @@ import (
 	"time"
 
 	"github.com/Mikatech/sso-auth-server/go/pkg/config"
+	"github.com/Mikatech/sso-auth-server/go/pkg/routes"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
 const DBMaxOpenTries = 5
 
-type Database struct {
-	Client *gorm.DB
-}
-
 func dsnBuilder() string {
 	dsn := "host=" + config.Config.PostgresHost + " user=" + config.Config.PostgresUser + " password=" + config.Config.PostgresPassword + " dbname=" + config.Config.PostgresDb + " port=" + config.Config.PostgresPort + " sslmode=disable TimeZone=Europe/Paris"
 	return dsn
 }
 
-func Init() (*Database, error) {
+func Init() (*routes.Svc, error) {
 	dsn := dsnBuilder()
 
 	dbOpenTries := 0
@@ -38,7 +35,7 @@ func Init() (*Database, error) {
 			dbOpenTries++
 			return nil, err
 		}
-		return &Database{Client: database}, nil
+		return &routes.Svc{Db: database}, nil
 	}
 	return nil, nil
 }
