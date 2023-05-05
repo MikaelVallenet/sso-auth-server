@@ -5,6 +5,10 @@ import (
 	"gorm.io/gorm"
 )
 
+type Svc struct {
+	db *gorm.DB
+}
+
 func Init(db *gorm.DB) *gin.Engine {
 	svc := &Svc{db: db}
 	router := gin.New()
