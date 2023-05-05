@@ -4,7 +4,7 @@ services:
   db:
     image: postgres:15
     container_name: sso_db
-    restart: always
+    restart: on-failure
     network_mode: "host"
     env_file:
       - "./postgres/.env"
@@ -17,7 +17,7 @@ services:
       context: .
       dockerfile: Dockerfile.server
     container_name: sso_server
-    restart: always
+    restart: on-failure
     network_mode: "host"
     env_file:
       - "./go/.env"
