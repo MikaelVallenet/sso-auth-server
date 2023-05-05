@@ -17,6 +17,9 @@ type config struct {
 	PostgresPassword string `mapstructure:"POSTGRES_PASSWORD"`
 	PostgresUser     string `mapstructure:"POSTGRES_USER"`
 	PostgresDb       string `mapstructure:"POSTGRES_DB"`
+	Issuer           string `mapstructure:"ISSUER"`
+	ExpireIn         string `mapstructure:"EXPIRE_IN"`
+	PrivateKeyPath   string `mapstructure:"PRIVATE_KEY_PATH"`
 }
 
 func LoadConfig() error {

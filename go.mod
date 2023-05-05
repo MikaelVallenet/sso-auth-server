@@ -4,7 +4,9 @@ go 1.20
 
 require (
 	github.com/gin-gonic/gin v1.9.0
+	github.com/go-playground/validator/v10 v10.13.0
 	github.com/gogo/protobuf v1.3.2
+	github.com/golang-jwt/jwt v3.2.2+incompatible
 )
 
 require (
@@ -14,7 +16,6 @@ require (
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
-	github.com/go-playground/validator/v10 v10.13.0 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/jackc/pgpassfile v1.0.0 // indirect
@@ -45,7 +46,6 @@ require (
 )
 
 require (
-	github.com/go-playground/validator v9.31.0+incompatible
 	github.com/golang/protobuf v1.5.2
 	github.com/kr/pretty v0.3.1 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.7 // indirect
